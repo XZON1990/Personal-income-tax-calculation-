@@ -1,0 +1,41 @@
+#-*-  coding:utf-8  -*-
+import sys
+type = sys.getfilesystemencoding()
+
+print '2016年个人所得税计算器【BY XEON1990】'.decode('utf-8').encode(type)
+print '请输入您的税前月薪（单位：元）：'.decode('utf-8').encode(type)
+personal_income = int(raw_input())
+print '请输入您的社保总和（单位：元）：'.decode('utf-8').encode(type)
+personal_insurance = int(raw_input())
+print '个人缴纳金额合计:'.decode('utf-8').encode(type),
+print personal_income-personal_insurance,
+print '元'.decode('utf-8').encode(type)
+
+income_for_tax = personal_income-personal_insurance
+
+def tax_compute (income_for_tax):
+    income_for_tax = income_for_tax - 3500
+    if income_for_tax>80000 :  
+           tax = income_for_tax * 0.45 -13505
+    elif income_for_tax>55000 :
+           tax = income_for_tax *0.35 -5505
+    elif income_for_tax>35000 :
+            tax = income_for_tax * 0.30 -2755
+    elif income_for_tax>9000 :
+            tax = income_for_tax *0.25 -1005
+    elif income_for_tax>4500 :
+            tax = income_for_tax *0.20 - 555
+    elif income_for_tax>1500 :
+            tax = income_for_tax *0.10 -105
+    elif income_for_tax>0 :
+            tax=income_for_tax*0.03
+    else :
+            tax=0
+    return tax
+tax = tax_compute (income_for_tax)
+print "应缴纳个人所得税:".decode('utf-8').encode(type),
+print tax,
+print '元'.decode('utf-8').encode(type)
+print "税后月薪为:".decode('utf-8').encode(type),
+print income_for_tax-tax,
+print '元'.decode('utf-8').encode(type)
